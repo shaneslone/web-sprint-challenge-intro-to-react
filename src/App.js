@@ -3,6 +3,12 @@ import axios from 'axios';
 import './App.css';
 import Character from './components/Character'
 import { BASE_URL } from './constants'
+import styled from 'styled-components'
+
+const StyledDiv = styled.div`
+display: flex;
+flex-wrap: wrap;
+`;
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -39,13 +45,12 @@ useEffect(() => {
  }
 }, [nextPage])
 
-// console.log(characters)
 if(!characters) return<h2>Loading...</h2>
   return (
-    <div className="App">
-      <h1 className="Header">Characters</h1>
+    <StyledDiv>
       {characters.map(character => <Character name={character.name} height={character.height} weight={character.mass} films={character.films} />)}
-    </div>
+      {/* <Character name={characters[0].name} height={characters[0].height} weight={characters[0].mass} films={characters[0].films}/> */}
+    </StyledDiv>
   );
 }
 

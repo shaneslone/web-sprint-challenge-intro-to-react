@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-// import img from './images.sw-bg.jpg';
 import App from './App';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import theme from './theme'
 
 const StyledApp = styled.div`
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  /* background-image: url(url); */
-  /* background-size: cover;
+  background-image: url(${pr => pr.theme.backgroundImg});
+  background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;*/
+  background-attachment: fixed;
+  min-height: 100vh;
 `; 
 
-ReactDOM.render(<StyledApp><App /></StyledApp>, document.getElementById('root'));
+ReactDOM.render(<ThemeProvider theme={theme}><StyledApp><App /></StyledApp></ThemeProvider>, document.getElementById('root'));
