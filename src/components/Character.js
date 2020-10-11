@@ -36,8 +36,8 @@ export default function Character(props){
     <StyledCharacter key={name}>
         <ul>
           <li><span>Name:</span> {name}</li>
-          <li><span>Height:</span> {height}cm</li>
-          <li><span>Weight:</span> {weight}kg</li>
+          <li><span>Height:</span> {height === 'unknown' ? 'unknown' : `${height}cm`}</li>
+          <li><span>Weight:</span> {weight === 'unknown' ? 'unknown' : `${weight}kg`}</li>
           <li><span>Films:</span>
           <ul>
             {filmList.map(film => <li>{film}</li>)}
