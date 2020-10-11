@@ -1,4 +1,3 @@
-// Write your Character component here
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'
@@ -22,38 +21,31 @@ const StyledCharacter = styled.div`
 
 export default function Character(props){
     const { name, height, weight, films } = props;
-    let [filmList, setFilmList] = useState('')
+    const [filmList, setFilmList] = useState([]);
     
-    // console.log(films)
-    let filmsString = "";
-
     useEffect(() => {
-        // const newFilmArray = [];
         films.map(filmUrl => {
             axios.get(filmUrl)
             .then(res => {
-                console.log(res)
-            //    newFilmArray.push(res.data.title)
-               setFilmList(filmList += ` ${res.data.title},`)
-            //    console.log(newFilmArray)
-            //    console.log(filmList)
-            //    filmsString = filmList.join('')
+                setFilmList(filmList => [...filmList, res.data.title])
             })
         })
     }, [])
-    
 
     return (
-    <StyledCharacter>
+    <StyledCharacter key={name}>
         <ul>
           <li><span>Name:</span> {name}</li>
           <li><span>Height:</span> {height}cm</li>
           <li><span>Weight:</span> {weight}kg</li>
-        <li><span>Films:</span> {filmList}</li>
+          <li><span>Films:</span>
+          <ul>
+            {filmList.map(film => <li>{film}</li>)}
+          </ul>
+          </li>
         </ul>
-        <ul>
-
-        </ul>
+       
+   
     </StyledCharacter>
     )
 
