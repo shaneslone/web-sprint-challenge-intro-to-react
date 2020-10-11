@@ -5,16 +5,16 @@ import axios from 'axios'
 const StyledCharacter = styled.div`
     width: 25%;
     margin: 1% auto;
-    color: black;
-    background-color: white;
-    border-radius: 5px;
+    color: ${pr => pr.theme.primaryColor};
+    background-color: ${pr => pr.theme.backgroundColor};
+    border-radius: 10px;
     padding: 1%;
     span{
         font-weight: bold;
     }
     
     ul{
-        width: 50%;
+        width: 750%;
         margin: 0 auto;
     }
 `;

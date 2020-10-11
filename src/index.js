@@ -4,7 +4,7 @@ import App from './App';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from './theme'
 
-const StyledApp = styled.div`
+const StyledApp = styled.section`
   margin: 0;
   padding: 0;
   font-family: sans-serif;
