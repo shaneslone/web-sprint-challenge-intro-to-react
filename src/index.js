@@ -1,6 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import styled, { ThemeProvider } from 'styled-components';
+import theme from './theme'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const StyledApp = styled.section`
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: url(${pr => pr.theme.backgroundImg});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+`; 
+
+ReactDOM.render(<ThemeProvider theme={theme}><StyledApp><App /></StyledApp></ThemeProvider>, document.getElementById('root'));
